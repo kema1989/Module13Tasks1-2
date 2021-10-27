@@ -1,7 +1,7 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Module13Task1
@@ -36,7 +36,6 @@ namespace Module13Task1
                 linkedList.AddLast(line);
             stopwatch2.Stop();
             Console.WriteLine(stopwatch2.ElapsedMilliseconds);
-
         }
     }
 }
