@@ -20,22 +20,20 @@ namespace Module13Task1
 
             var noPunctuationText = new string(text.Where(c => !char.IsPunctuation(c)).ToArray());
 
+            //-------------------------------
             var stopwatch1 = new Stopwatch();
             stopwatch1.Start();
             foreach (var line in noPunctuationText)
                 list.Add(line);
             stopwatch1.Stop();
-            Console.WriteLine(stopwatch1.ElapsedMilliseconds);
-
-            //foreach(var line in list)
-            //    Console.WriteLine(line);
-
+            Console.WriteLine(stopwatch1.ElapsedMilliseconds); // ~ 13 мс
+            //-------------------------------
             var stopwatch2 = new Stopwatch();
             stopwatch2.Start();
             foreach (var line in noPunctuationText)
                 linkedList.AddLast(line);
             stopwatch2.Stop();
-            Console.WriteLine(stopwatch2.ElapsedMilliseconds);
+            Console.WriteLine(stopwatch2.ElapsedMilliseconds); // ~ 120 мс
         }
     }
 }

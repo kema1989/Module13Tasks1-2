@@ -11,18 +11,22 @@ namespace Module13Task2
         {
             var path = @"C:\Users\YOGA\Downloads\Text1.txt";
 
-            var dict = new Dictionary<long, string>();
-
             var list = new List<string>();
 
-            using (StreamReader sr = new StreamReader(path))
+            var text = File.ReadAllText(path);
+
+            var noPunctuationText = new string(text.Where(c => !char.IsPunctuation(c)).ToArray());
+
+            var newText = noPunctuationText.ToLower().Split(' ');
+
+            foreach (var word in newText)
+                list.Add(word);
+
+            var popularWords = list.GroupBy(c => c).OrderByDescending(g => g.Count()).Select(g => new { Name = g.Key, Count = g.Count() }).Take(10);
+
+            foreach (var word in popularWords)
             {
-                var text = sr.Read();
-                var noPunctuationText = new string(text.Where(c => !char.IsPunctuation(c)).ToArray());
-                foreach (var word in noPunctuationText)
-                {
-                    list.Add(word);
-                }
+                Console.WriteLine("Слово \"" + word.Name + "\" встречается " + word.Count + " раз");
             }
         }
     }
